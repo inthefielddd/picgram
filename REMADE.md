@@ -1,4 +1,4 @@
-# Clonegram
+# Picgram
 Cloning instagram with NodeJS and VanillaJS
 
 ## Pages
@@ -9,8 +9,8 @@ Cloning instagram with NodeJS and VanillaJS
 - [ ] User Detail
 - [ ] Edit Profile
 - [ ] Change Password
-- [ ] Video Detail
-- [ ] Edit Video
+- [ ] Picture Detail
+- [ ] Edit Picture
 - [ ] Upload
 
 ## Features

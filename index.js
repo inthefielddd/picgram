@@ -5,7 +5,8 @@ import cookieParser from "cookie-parser";
 import bodyParser from "body-parser";
 import { globalRouter } from "./routers/globalRouter";
 import { userRouter } from "./routers/userRouter";
-import { videoRouter } from "./routers/videoRouter";
+import { pictureRouter } from "./routers/pictureRouter";
+import { localMiddleware } from "./middleware";
 
 const app = express();
 
@@ -16,7 +17,11 @@ const handleListening = () => {
     console.log(`✅Listening on : http://localhost:${PORT}`);
 };
 
+//views(pug)
 app.set("view engine", "pug");
+
+//global middleware
+app.use(localMiddleware);
 
 //middleware
 app.use(helmet());
@@ -28,6 +33,6 @@ app.use(morgan("dev"));
 //routers
 app.use("/", globalRouter);
 app.use("/users", userRouter);
-app.use("/videos", videoRouter);
+app.use("/pictures", pictureRouter);
 
 app.listen(PORT, handleListening);
