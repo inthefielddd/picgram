@@ -1,4 +1,10 @@
 extends layouts/main
 
 block content
-    h1 upload
+    .form-container
+        form(action=`/pictures${routes.upload}` method="post")
+            input(type="file" name="file")
+            input(type="text" name="title" placeholder="Title")
+            textarea(name="description"  placeholder="Description")
+            input(type="submit" value="Upload")
+            

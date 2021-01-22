@@ -1,4 +1,12 @@
 extends layouts/main
+include mixins/imageBlock
 
 block content
-    h1 home
+    .images
+        each image in images
+            +imageBlock({
+                id:image.id,
+                imgFile:image.imgFile,
+                title:image.title,
+                views:image.views
+            })

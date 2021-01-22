@@ -25,12 +25,24 @@ const routes = {
     login: LOGIN,
     logout: LOGOUT,
     users: USERS,
-    userDetail: USER_DETAIL,
+    userDetail: (id) => {
+        if (id) {
+            return `/users/${id}`;
+        } else {
+            return USER_DETAIL;
+        }
+    },
     editProfile: EDIT_PROFILE,
     changePassword: CHANGE_PASSWORD,
     pictures: PICTURES,
     upload: UPLOAD,
-    pictureDetail: PICTURE_DETAIL,
+    pictureDetail: (id) => {
+        if (id) {
+            return `/pictures/${id}`;
+        } else {
+            return PICTURE_DETAIL;
+        }
+    },
     editPicture: EDIT_PICTURE,
     deletePicture: DELETE_PICTURE,
 };
