@@ -16,6 +16,8 @@ const handleListening = () => {
     console.log(`✅Listening on : http://localhost:${PORT}`);
 };
 
+app.set("view engine", "pug");
+
 //middleware
 app.use(helmet());
 app.use(cookieParser());

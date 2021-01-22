@@ -14,9 +14,9 @@ Cloning instagram with NodeJS and VanillaJS
 - [ ] Upload
 
 ## Features
-- [] Pug
-- [] MongoDB
-- [] multer
-- [] passport
-- [] webpack
-- [] scss
+- [ ] Pug
+- [ ] MongoDB
+- [ ] multer
+- [ ] passport
+- [ ] webpack
+- [ ] scss
