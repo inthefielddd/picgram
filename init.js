@@ -1,6 +1,8 @@
 import "./db";
 import dotenv from "dotenv";
 import app from "./app";
+import "./models/Image";
+import "./models/User";
 
 dotenv.config();
 //port
