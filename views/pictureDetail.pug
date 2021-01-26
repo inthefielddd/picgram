@@ -1,4 +1,18 @@
 extends layouts/main
 
 block content
-    h4 picture Detial
+    .image
+        img(src=`/${image.fileUrl}`, alt=image.title width=500)    
+    .image__info
+        a(href=routes.editPicture(image.id)) Edit Picture
+        .image__detail 
+            .image__likeBtn
+                button.image__likeBtn-icon
+                    i.far.fa-heart
+                span.image__likeBtn-text 좋아요
+            .image__comments 
+                span.image__comments-text 댓글 0 개
+            .image__createDate #{new Date().getFullYear()}.#{new Date().getMonth()+ 1,2}.#{new Date().getDate()}
+        h5.image__title=image.title
+        span.image__views=image.views
+        p.image__description=image.description     

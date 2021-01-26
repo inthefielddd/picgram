@@ -16,6 +16,9 @@ app.set("view engine", "pug");
 //global middleware
 app.use(localMiddleware);
 
+//multer
+app.use("/uploads", express.static("uploads"));
+
 //middleware
 app.use(helmet());
 app.use(cookieParser());

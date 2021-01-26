@@ -14,9 +14,19 @@ const ImageSchema = new mongoose.Schema({
         type: Number,
         default: 0,
     },
+    commnets: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Comment",
+        },
+    ],
     createdAt: {
         type: Date,
         default: Date.now(),
+    },
+    creator: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
     },
 });
 

@@ -43,8 +43,20 @@ const routes = {
             return PICTURE_DETAIL;
         }
     },
-    editPicture: EDIT_PICTURE,
-    deletePicture: DELETE_PICTURE,
+    editPicture: (id) => {
+        if (id) {
+            return `/pictures/${id}/edit`;
+        } else {
+            return EDIT_PICTURE;
+        }
+    },
+    deletePicture: (id) => {
+        if (id) {
+            return `/pictures/${id}/delete`;
+        } else {
+            return DELETE_PICTURE;
+        }
+    },
 };
 
 export default routes;
