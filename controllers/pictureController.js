@@ -10,11 +10,17 @@ export const home = async (req, res) => {
     }
 };
 
-export const search = (req, res) => {
+export const search = async (req, res) => {
     const {
-        query: { term: SearchingBy },
+        query: { term: searchingBy },
     } = req;
-    res.render("search", { pageTitle: "Search", SearchingBy });
+    let images = [];
+    try {
+        images = await Image.find({ title: { $regex: searchingBy, $options: "i" } });
+    } catch (error) {
+        console.log(error);
+    }
+    res.render("search", { pageTitle: "Search", searchingBy, images });
 };
 
 export const getUpload = (req, res) => {
