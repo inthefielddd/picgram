@@ -19,6 +19,9 @@ app.use(localMiddleware);
 //multer
 app.use("/uploads", express.static("uploads"));
 
+//webpack
+app.use("/static", express.static("static"));
+
 //middleware
 app.use(helmet());
 app.use(cookieParser());
