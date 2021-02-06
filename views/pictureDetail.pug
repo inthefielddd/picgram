@@ -1,21 +1,27 @@
 extends layouts/main
 
 block content
-    .image
-        img(src=`/${image.fileUrl}`, alt=image.title width=500)    
-    .image__info
-        a(href=routes.editPicture(image.id)) Edit Picture
-        .image__detail 
-            .image__likeBtn
-                button.image__likeBtn-icon
-                    i.far.fa-heart
-                span.image__likeBtn-text 좋아요
-            .image__comments 
-                if image.comments.length === 1
-                    span.image__comment-number 1 comment
-                else    
-                    span.image__comment-number #{image.comments.length} comments
-            .image__createDate=image.createdAt
-        h5.image__title=image.title
-        span.image__views=image.views
-        p.image__description=image.description     
+    .image-container
+        .image
+            img(src=`/${image.fileUrl}`, alt=image.title width=500)    
+        .image__info
+            .image__info-wrapper
+                .image__edit
+                    a(href=routes.editPicture(image.id)) Edit Picture
+                span.image__views=image.views
+            .image__detail
+                .image__detail-wrapper
+                    .image__likeBtn
+                        a.image__likeBtn-icon
+                            i.far.fa-heart
+                        span.image__likeBtn-text 0 좋아요
+                    .image__comments 
+                        if image.comments.length === 1
+                            span.image__comment-number 1 comment
+                        else    
+                            span.image__comment-number #{image.comments.length} comments
+                .image__createDate 
+                    span #{new Date().getFullYear()}.#{new Date().getMonth()+1}.#{new Date().getDate()}
+            h4.image__autor 최현지
+            h5.image__title=image.title
+            p.image__description=image.description     

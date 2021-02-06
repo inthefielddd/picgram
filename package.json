@@ -4,7 +4,7 @@
   "description": "picgram with node.js and javasciript",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --exec babel-node init.js --delay 2",
+    "dev:server": "nodemon --exec babel-node init.js --delay 2",
     "dev:assets": "WEBPACK_ENV=development webpack -w",
     "bulid:assets": "WEBPACK_ENV=production webpack"
   },

@@ -3,7 +3,9 @@ extends layouts/main
 block content
     .form-container
         form(action=`/pictures${routes.upload}` method="post"  enctype="multipart/form-data")
-            input(type="file" name="imgFile" required=true accept="image/*")
+            .fileUpload
+                label(for="file") Image File 
+                input(type="file" name="imgFile" required=true accept="image/*")
             input(type="text" name="title" placeholder="Title" required=true)
             textarea(name="description"  placeholder="Description" required=true)
             input(type="submit" value="Upload")

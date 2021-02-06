@@ -2,8 +2,11 @@ extends layouts/main
 
 block content
     .user-profile
+        .user-profile__header 
+            img.u-avatar
+            h4.profile__username
         .user-profile__btns 
             a(href=`/users/${routes.editProfile}`) 
                 button ✏️ Edit Profile    
             a(href=`/users/${routes.changePassword}`) 
-                button 🕵️‍♀️ Change Password    
+                button 🕵️‍♀️ Change Password

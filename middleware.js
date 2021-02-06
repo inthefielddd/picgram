@@ -1,5 +1,5 @@
-import routes from "./routes";
 import multer from "multer";
+import routes from "./routes";
 
 //위치
 export const multerImage = multer({ dest: "uploads/images/" });

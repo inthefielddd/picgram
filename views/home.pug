@@ -2,11 +2,9 @@ extends layouts/main
 include mixins/imageBlock
 
 block content
-    .images
+    .home-images
         each image in images
             +imageBlock({
                 id:image.id,
                 imgFile:image.fileUrl,
-                title:image.title,
-                views:image.views
             })
