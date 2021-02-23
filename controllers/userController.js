@@ -1,10 +1,12 @@
+import passport from "../passport";
 import routes from "../routes";
+import User from "../models/User";
 
 export const getJoin = (req, res) => {
     res.render("join", { pageTitle: "Join" });
 };
 
-export const postJoin = (req, res) => {
+export const postJoin = async (req, res, next) => {
     const {
         body: { name, email, password, password2 },
     } = req;
@@ -12,11 +14,26 @@ export const postJoin = (req, res) => {
         res.status(400);
         res.render("join", { pageTitle: "Join" });
     } else {
-        res.redirect(routes.home);
+        try {
+            //로컬유저 등록
+            const user = await User({
+                name,
+                email,
+            });
+            //만든계정과 비밀번호 등록하기
+            await User.register(user, password);
+            console.log(user);
+            next();
+        } catch (error) {
+            console.log(error);
+            res.redirect(routes.home);
+        }
     }
 };
 
-export const login = (req, res) => res.render("login", { pageTitle: "Login" });
+export const getLogin = (req, res) => res.render("login", { pageTitle: "Login" });
+
+export const postLogin = passport.authenticate("local", { successRedirect: routes.home, failureRedirect: routes.login });
 
 export const logout = (req, res) => {
     req.logout();

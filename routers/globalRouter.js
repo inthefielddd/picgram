@@ -1,5 +1,5 @@
 import express from "express";
-import { getJoin, postJoin, login, logout } from "../controllers/userController";
+import { getJoin, postJoin, getLogin, postLogin, logout } from "../controllers/userController";
 import { home, search } from "../controllers/pictureController";
 import routes from "../routes";
 
@@ -11,9 +11,11 @@ globalRouter.get(routes.search, search);
 
 //join
 globalRouter.get(routes.join, getJoin);
-globalRouter.post(routes.join, postJoin);
+globalRouter.post(routes.join, postJoin, postLogin);
 
-globalRouter.get(routes.login, login);
+//login
+globalRouter.get(routes.login, getLogin);
+globalRouter.post(routes.login, postLogin);
 
 globalRouter.get(routes.logout, logout);
 

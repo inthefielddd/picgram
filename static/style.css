@@ -37,25 +37,28 @@ textarea,
 .fileUpload {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   padding: 7px 10px;
+  padding-left: 10px;
   border: none;
   resize: none;
   max-width: 320px;
   width: 100%;
   border-radius: 4px;
-  background-color: #ffffff;
   color: #444444; }
   button::-moz-placeholder, input:not([type="file"])::-moz-placeholder, textarea::-moz-placeholder, .fileUpload::-moz-placeholder {
-    font-weight: 300;
-    color: #444444; }
+    padding: 10px;
+    font-weight: 200;
+    color: #6f6f6f; }
   button:-ms-input-placeholder, input:not([type="file"]):-ms-input-placeholder, textarea:-ms-input-placeholder, .fileUpload:-ms-input-placeholder {
-    font-weight: 300;
-    color: #444444; }
+    padding: 10px;
+    font-weight: 200;
+    color: #6f6f6f; }
   button::placeholder,
   input:not([type="file"])::placeholder,
   textarea::placeholder,
   .fileUpload::placeholder {
-    font-weight: 300;
-    color: #444444; }
+    padding: 10px;
+    font-weight: 200;
+    color: #6f6f6f; }
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -101,7 +104,6 @@ table {
   border-spacing: 0; }
 
 .header {
-  width: 100%;
   background-color: #ffffff;
   margin-bottom: 50px;
   border-bottom: 1px solid #e7e7e7; }
@@ -113,44 +115,46 @@ table {
     margin: 0 auto;
     align-items: center;
     padding: 0.5em 1em; }
-    .header .header__wrapper .header__column i {
-      color: #b5269a;
-      font-size: 30px; }
-    .header .header__wrapper .header__column:nth-child(2) {
-      width: 100%;
-      justify-self: center; }
-    .header .header__wrapper .header__column:last-child {
-      justify-self: end; }
-    .header .header__wrapper .header__column ul {
-      display: flex;
-      color: #444444;
-      align-items: center;
-      text-transform: uppercase;
-      font-weight: 700; }
-      .header .header__wrapper .header__column ul li:not(:last-child) {
-        margin-right: 0.4em; }
-      .header .header__wrapper .header__column ul li a {
-        color: #b5269a; }
-    .header .header__wrapper .header__column form {
+    .header .header__wrapper .header__column {
       width: 100%; }
-      .header .header__wrapper .header__column form input {
+      .header .header__wrapper .header__column i {
+        color: #b5269a;
+        font-size: 30px; }
+      .header .header__wrapper .header__column:nth-child(2) {
         width: 100%;
-        padding: 6px 8px;
-        font-size: 14px;
-        font-weight: 600;
-        border: 1px solid #e7e7e7;
-        border-radius: 4px; }
-        .header .header__wrapper .header__column form input::-moz-placeholder {
-          font-weight: 400;
-          color: #444444; }
-        .header .header__wrapper .header__column form input:-ms-input-placeholder {
-          font-weight: 400;
-          color: #444444; }
-        .header .header__wrapper .header__column form input::placeholder {
-          font-weight: 400;
-          color: #444444; }
-        .header .header__wrapper .header__column form input:focus {
-          outline: none; }
+        justify-self: center; }
+      .header .header__wrapper .header__column:last-child {
+        justify-self: end; }
+      .header .header__wrapper .header__column ul {
+        display: flex;
+        color: #444444;
+        align-items: center;
+        text-transform: uppercase;
+        font-weight: 700; }
+        .header .header__wrapper .header__column ul li:not(:last-child) {
+          margin-right: 0.4em; }
+        .header .header__wrapper .header__column ul li a {
+          color: #b5269a; }
+      .header .header__wrapper .header__column form {
+        width: 100%; }
+        .header .header__wrapper .header__column form input {
+          width: 100%;
+          padding: 6px 8px;
+          font-size: 14px;
+          font-weight: 600;
+          border: 1px solid #e7e7e7;
+          border-radius: 4px; }
+          .header .header__wrapper .header__column form input::-moz-placeholder {
+            font-weight: 400;
+            color: #444444; }
+          .header .header__wrapper .header__column form input:-ms-input-placeholder {
+            font-weight: 400;
+            color: #444444; }
+          .header .header__wrapper .header__column form input::placeholder {
+            font-weight: 400;
+            color: #444444; }
+          .header .header__wrapper .header__column form input:focus {
+            outline: none; }
 
 .footer {
   margin: 50px 0;
