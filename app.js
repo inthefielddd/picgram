@@ -2,6 +2,7 @@ import passport from "passport";
 import express from "express";
 import morgan from "morgan";
 import session from "express-session";
+import MongoStore from "connect-mongo";
 import helmet from "helmet";
 import cookieParser from "cookie-parser";
 import bodyParser from "body-parser";
@@ -9,42 +10,42 @@ import globalRouter from "./routers/globalRouter";
 import userRouter from "./routers/userRouter";
 import pictureRouter from "./routers/pictureRouter";
 import { localMiddleware } from "./middleware";
+import routes from "./routes";
+
+import "./passport";
 
 const app = express();
 
+app.use(helmet({ contentSecurityPolicy: false }));
 //views(pug)
 app.set("view engine", "pug");
-
-//global middleware
-app.use(localMiddleware);
-
 //multer
 app.use("/uploads", express.static("uploads"));
-
 //webpack
 app.use("/static", express.static("static"));
-
 //middleware
-app.use(helmet({ contentSecurityPolicy: false }));
-app.use(cookieParser());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
 app.use(morgan("dev"));
-
 //session
 app.use(
     session({
-        secret: "Vu3o2fgUAPPtuoXYzc61MW2W9jTUsLVM",
+        secret: process.env.COOKIE_SECRET,
         resave: true,
         saveUninitialized: false,
+        store: MongoStore.create({ mongoUrl: process.env.MONGO_URL }),
     })
 );
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(cookieParser());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+//global middleware
+app.use(localMiddleware);
 
 //routers
-app.use("/", globalRouter);
-app.use("/users", userRouter);
-app.use("/pictures", pictureRouter);
+app.use(routes.home, globalRouter);
+app.use(routes.users, userRouter);
+app.use(routes.pictures, pictureRouter);
 
 export default app;

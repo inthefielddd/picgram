@@ -1,6 +1,6 @@
 import express from "express";
 import { getUpload, pictureDetail, deletePicture, postUpload, getEditPicture, postEditPicture } from "../controllers/pictureController";
-import { uploadImage } from "../middleware";
+import { onlyPrivate, uploadImage } from "../middleware";
 
 import routes from "../routes";
 
@@ -12,9 +12,9 @@ pictureRouter.post(routes.upload, uploadImage, postUpload);
 
 pictureRouter.get(routes.pictureDetail(), pictureDetail);
 
-pictureRouter.get(routes.editPicture(), getEditPicture);
-pictureRouter.post(routes.editPicture(), postEditPicture);
+pictureRouter.get(routes.editPicture(), onlyPrivate, getEditPicture);
+pictureRouter.post(routes.editPicture(), onlyPrivate, postEditPicture);
 
-pictureRouter.get(routes.deletePicture(), deletePicture);
+pictureRouter.get(routes.deletePicture(), onlyPrivate, deletePicture);
 
 export default pictureRouter;

@@ -18,6 +18,10 @@ const PICTURE_DETAIL = "/:id";
 const EDIT_PICTURE = "/:id/edit";
 const DELETE_PICTURE = "/:id/delete";
 
+//github
+const GITHUB = "/auth/github";
+const GITHUB_CALLBACK = "/auth/github/callback";
+
 const routes = {
     home: HOME,
     search: SEARCH,
@@ -57,6 +61,8 @@ const routes = {
             return DELETE_PICTURE;
         }
     },
+    github: GITHUB,
+    gitHubCallback: GITHUB_CALLBACK,
 };
 
 export default routes;

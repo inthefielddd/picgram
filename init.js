@@ -1,10 +1,14 @@
-import "./db";
 import dotenv from "dotenv";
+
+import "./db";
 import app from "./app";
+
+import "./passport";
+
+//models
 import "./models/Image";
 import "./models/User";
 import "./models/Comment";
-import "./passport";
 
 dotenv.config();
 

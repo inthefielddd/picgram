@@ -1,10 +1,11 @@
-html, body {
+html,
+body {
   height: 100%; }
 
 body {
   background-color: #f5f5f5;
   color: #444444;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-size: 14px; }
 
 main {
@@ -17,8 +18,6 @@ main {
 
 button {
   border: none;
-  background: linear-gradient(-125deg, #fa0570, #b5269a);
-  color: #444444;
   cursor: pointer; }
 
 a {
@@ -33,46 +32,115 @@ button.delete {
 
 button,
 input:not([type="file"]),
-textarea,
-.fileUpload {
+textarea {
+  cursor: pointer;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  padding: 7px 10px;
-  padding-left: 10px;
+  padding: 10px;
   border: none;
   resize: none;
-  max-width: 320px;
   width: 100%;
   border-radius: 4px;
   color: #444444; }
-  button::-moz-placeholder, input:not([type="file"])::-moz-placeholder, textarea::-moz-placeholder, .fileUpload::-moz-placeholder {
+  button::-moz-placeholder, input:not([type="file"])::-moz-placeholder, textarea::-moz-placeholder {
     padding: 10px;
     font-weight: 200;
     color: #6f6f6f; }
-  button:-ms-input-placeholder, input:not([type="file"]):-ms-input-placeholder, textarea:-ms-input-placeholder, .fileUpload:-ms-input-placeholder {
+  button:-ms-input-placeholder, input:not([type="file"]):-ms-input-placeholder, textarea:-ms-input-placeholder {
     padding: 10px;
     font-weight: 200;
     color: #6f6f6f; }
   button::placeholder,
   input:not([type="file"])::placeholder,
-  textarea::placeholder,
-  .fileUpload::placeholder {
+  textarea::placeholder {
     padding: 10px;
     font-weight: 200;
     color: #6f6f6f; }
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+.fileUpload label {
+  font-weight: 400;
+  margin-right: 10px; }
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
   margin: 0;
   padding: 0;
   border: 0;
@@ -81,27 +149,58 @@ time, mark, audio, video {
   vertical-align: baseline; }
 
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
   display: block; }
 
 body {
   line-height: 1; }
 
-ol, ul {
+ol,
+ul {
   list-style: none; }
 
-blockquote, q {
+blockquote,
+q {
   quotes: none; }
 
-blockquote:before, blockquote:after,
-q:before, q:after {
-  content: '';
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
   content: none; }
 
 table {
   border-collapse: collapse;
   border-spacing: 0; }
+
+a {
+  text-decoration: none; }
+
+input {
+  border: none;
+  box-sizing: border-box; }
+  input input:focus,
+  input input:active {
+    outline: none; }
+
+button {
+  max-width: 320px;
+  color: #ffffff;
+  border: none;
+  outline: none; }
+  button:not(:last-child) {
+    margin-bottom: 25px; }
 
 .header {
   background-color: #ffffff;
@@ -114,9 +213,9 @@ table {
     grid-template-columns: repeat(3, 1fr);
     margin: 0 auto;
     align-items: center;
-    padding: 0.5em 1em; }
+    padding: 1em 0; }
     .header .header__wrapper .header__column {
-      width: 100%; }
+      display: flex; }
       .header .header__wrapper .header__column i {
         color: #b5269a;
         font-size: 30px; }
@@ -125,16 +224,16 @@ table {
         justify-self: center; }
       .header .header__wrapper .header__column:last-child {
         justify-self: end; }
-      .header .header__wrapper .header__column ul {
-        display: flex;
-        color: #444444;
-        align-items: center;
-        text-transform: uppercase;
-        font-weight: 700; }
-        .header .header__wrapper .header__column ul li:not(:last-child) {
-          margin-right: 0.4em; }
-        .header .header__wrapper .header__column ul li a {
-          color: #b5269a; }
+        .header .header__wrapper .header__column:last-child ul {
+          display: flex;
+          color: #444444;
+          align-items: center;
+          text-transform: uppercase;
+          font-weight: 700; }
+          .header .header__wrapper .header__column:last-child ul li:not(:last-child) {
+            margin-right: 1em; }
+          .header .header__wrapper .header__column:last-child ul a {
+            color: #b5269a; }
       .header .header__wrapper .header__column form {
         width: 100%; }
         .header .header__wrapper .header__column form input {
@@ -186,10 +285,12 @@ table {
   .form-container form {
     width: 100%;
     max-width: 320px;
-    margin-bottom: 25px; }
+    margin-bottom: 50px; }
     .form-container form input:not([type="file"]),
     .form-container form .fileUpload {
+      border-radius: 4px;
       display: block;
+      max-width: 320px;
       width: 100%;
       padding: 10px 0;
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); }
@@ -197,9 +298,12 @@ table {
       .form-container form .fileUpload:not(:last-child) {
         margin-bottom: 25px; }
     .form-container form textarea {
+      width: 100%;
       max-width: 320px;
       margin-bottom: 25px;
       padding: 0;
+      border: 0;
+      outline: 0;
       height: 5em;
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); }
     .form-container form input[type="submit"] {
@@ -226,9 +330,6 @@ table {
       .social-login button span i {
         margin-right: 10px;
         font-size: 15px; }
-  .social-login .social-login__github {
-    background: #444444;
-    color: #ffffff; }
   .social-login .social-login__kakao {
     background: #f3d903;
     color: #444444; }

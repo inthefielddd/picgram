@@ -1,20 +1,20 @@
-.header{
-    background-color:$white;
-    margin-bottom:50px;
+.header {
+    background-color: $white;
+    margin-bottom: 50px;
     border-bottom: 1px solid $dark-grey;
-    .header__wrapper{
-        display:grid;
-        width:100%;
+    .header__wrapper {
+        display: grid;
+        width: 100%;
         max-width: 1200px;
         grid-template-columns: repeat(3, 1fr);
-        margin:0 auto;
+        margin: 0 auto;
         align-items: center;
-        padding:0.5em 1em;
-        .header__column{
-            width: 100%;
-            i{
-                color:#b5269a;
-                font-size:30px;
+        padding: 1em 0;
+        .header__column {
+            display: flex;
+            i {
+                color: #b5269a;
+                font-size: 30px;
             }
             &:nth-child(2) {
                 width: 100%;
@@ -22,43 +22,38 @@
             }
             &:last-child {
                 justify-self: end;
-            }
-
-            ul{
-                display:flex;
-                color:$black;
-                align-items: center;
-                text-transform: uppercase;
-                font-weight: 700;
-                li:not(:last-child){
-                    margin-right: 0.4em;
-                }
-                li a {
-                    color:#b5269a;
-                    
+                ul {
+                    display: flex;
+                    color: $black;
+                    align-items: center;
+                    text-transform: uppercase;
+                    font-weight: 700;
+                    li:not(:last-child) {
+                        margin-right: 1em;
+                    }
+                    a {
+                        color: #b5269a;
+                    }
                 }
             }
-            form{
-                width:100%;
-                input{
-                    width:100%;
-                    padding:6px 8px;
+            form {
+                width: 100%;
+                input {
+                    width: 100%;
+                    padding: 6px 8px;
                     font-size: $font-medium;
                     font-weight: 600;
-                    border:1px solid $dark-grey;
+                    border: 1px solid $dark-grey;
                     border-radius: 4px;
-                    &::placeholder{
+                    &::placeholder {
                         font-weight: 400;
-                        color:$black;
+                        color: $black;
                     }
-                    &:focus{
+                    &:focus {
                         outline: none;
                     }
                 }
             }
         }
-    }    
-
-
+    }
 }
-
