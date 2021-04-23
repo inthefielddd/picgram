@@ -64,9 +64,65 @@ export const githubLoginCallback = async (_, __, profile, cb) => {
         return cb(error);
     }
 };
+
 //다시 화면으로 렌더
-export const postGithubLogin = (req, res) => {
+export const postSocialLogin = (req, res) => {
     res.redirect(routes.home);
+};
+
+//kakao
+export const kakaoLogin = passport.authenticate("kakao");
+
+//kakaocallback
+export const kakaoLoginCallback = async (_, __, profile, done) => {
+    const {
+        _json: {
+            id,
+            properties: { nickname, profile_image: avatarUrl },
+        },
+    } = profile;
+    try {
+        const user = await User.findOne({ id });
+        if (user) {
+            user.kakaoId = id;
+            user.save();
+            return done(null, user);
+        }
+        const newUser = await User.create({
+            name: nickname,
+            email: id,
+            avatarUrl,
+            kakaoId: id,
+        });
+        return done(null, newUser);
+    } catch (error) {
+        return done(error);
+    }
+};
+
+export const googleLogin = passport.authenticate("google", { scope: ["profile"] });
+
+export const googleLoginCallback = async (_, __, profile, cb) => {
+    const {
+        id,
+        _json: { name, picture },
+    } = profile;
+    try {
+        const user = await User.findOrCreate({ googleId: id });
+        if (user) {
+            user.googleId = id;
+            user.save();
+            return cb(null, user);
+        }
+        const newUser = await User.create({
+            name,
+            googleId: id,
+            avatarUrl: picture,
+        });
+        return cb(null, newUser);
+    } catch (error) {
+        return cb(error);
+    }
 };
 
 export const logout = (req, res) => {
@@ -74,7 +130,9 @@ export const logout = (req, res) => {
     res.redirect(routes.home);
 };
 
-export const userDetail = (req, res) => res.render("userDetail", { pageTitle: "User Detail" });
+export const userDetail = (req, res) => {
+    res.render("userDetail", { pageTitle: "User Detail" });
+};
 
 export const editProfile = (req, res) => res.render("editProfile", { pageTitle: "Edit Profile" });
 

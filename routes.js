@@ -22,6 +22,14 @@ const DELETE_PICTURE = "/:id/delete";
 const GITHUB = "/auth/github";
 const GITHUB_CALLBACK = "/auth/github/callback";
 
+//kakao
+const KAKAO = "/auth/kakao";
+const KAKAO_CALLBACK = "/oauth";
+
+//google
+const GOOGLE = "/auth/google";
+const GOOGLE_CALLBACK = "/auth/google/callback";
+
 const routes = {
     home: HOME,
     search: SEARCH,
@@ -63,6 +71,10 @@ const routes = {
     },
     github: GITHUB,
     gitHubCallback: GITHUB_CALLBACK,
+    kakao: KAKAO,
+    kakaoCallback: KAKAO_CALLBACK,
+    google: GOOGLE,
+    googleCallback: GOOGLE_CALLBACK,
 };
 
 export default routes;
