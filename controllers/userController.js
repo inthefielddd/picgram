@@ -102,13 +102,14 @@ export const kakaoLoginCallback = async (_, __, profile, done) => {
 
 export const googleLogin = passport.authenticate("google", { scope: ["profile"] });
 
-export const googleLoginCallback = async (_, __, profile, cb) => {
+export const googleLoginCallback = async (accessToken, __, profile, cb) => {
+    console.log(accessToken);
     const {
         id,
         _json: { name, picture },
     } = profile;
     try {
-        const user = await User.findOrCreate({ googleId: id });
+        const user = await User.findOne({ id });
         if (user) {
             user.googleId = id;
             user.save();
