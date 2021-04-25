@@ -21,7 +21,7 @@ block content
                         else    
                             span.image__comment-number #{image.comments.length} comments
                 .image__createDate 
-                    span #{new Date().getFullYear()}.#{new Date().getMonth()+1}.#{new Date().getDate()}
+                    span=image.createdAt
             h4.image__autor 최현지
             h5.image__title=image.title
             p.image__description=image.description     

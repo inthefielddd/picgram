@@ -10,6 +10,7 @@ import {
     logout,
     googleLogin,
     postSocialLogin,
+    getMe,
 } from "../controllers/userController";
 import { home, search } from "../controllers/pictureController";
 import routes from "../routes";
@@ -26,6 +27,7 @@ globalRouter.get(routes.join, onlyPulic, getJoin);
 globalRouter.post(routes.join, onlyPulic, postJoin, postLogin);
 
 globalRouter.get(routes.logout, onlyPrivate, logout);
+
 //login
 globalRouter.get(routes.login, onlyPulic, getLogin);
 globalRouter.post(routes.login, onlyPulic, postLogin);
@@ -45,5 +47,7 @@ globalRouter.get(
 //google
 globalRouter.get(routes.google, googleLogin);
 globalRouter.get(routes.googleCallback, passport.authenticate("google", { failureRedirect: routes.login }), postSocialLogin);
+
+globalRouter.get(routes.me, getMe);
 
 export default globalRouter;

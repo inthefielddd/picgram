@@ -2,7 +2,6 @@
 @import "main.scss";
 @import "config/reset.scss";
 
-
 //partials
 @import "partials/header.scss";
 @import "partials/footer.scss";
@@ -10,7 +9,7 @@
 @import "partials/form.scss";
 @import "partials/socialLogin.scss";
 
-
 //pages
 @import "pages/pictureDetail.scss";
 @import "pages/home.scss";
+@import "pages/userDetail.scss";

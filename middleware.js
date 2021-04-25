@@ -10,7 +10,7 @@ export const uploadImage = multerImage.single("imgFile");
 export const localMiddleware = (req, res, next) => {
     res.locals.siteName = "Picgram";
     res.locals.routes = routes;
-    res.locals.user = req.user || null;
+    res.locals.loggedUser = req.user || null;
     next();
 };
 
@@ -18,6 +18,7 @@ export const localMiddleware = (req, res, next) => {
 
 export const onlyPulic = (req, res, next) => {
     if (req.user) {
+        //유저가있다면 홈으로
         res.redirect(routes.home);
     } else {
         next();
@@ -26,6 +27,7 @@ export const onlyPulic = (req, res, next) => {
 
 export const onlyPrivate = (req, res, next) => {
     if (req.user) {
+        console.log(req.user);
         next();
     } else {
         res.redirect(routes.home);

@@ -16,11 +16,11 @@ export const postJoin = async (req, res, next) => {
         res.render("join", { pageTitle: "Join" });
     } else {
         try {
-            //로컬유저 등록
             const user = await User({
                 name,
                 email,
             });
+            console.log(user);
             //만든계정과 비밀번호 등록하기
             await User.register(user, password);
             next();
@@ -47,19 +47,20 @@ export const githubLoginCallback = async (_, __, profile, cb) => {
     } = profile;
     try {
         const user = await User.findOne({ email });
+        console.log(user);
         if (user) {
             user.githubId = id;
+            user.avatarUrl = avatarUrl;
             user.save();
             return cb(null, user);
-        } else {
-            const newUser = await User.create({
-                name,
-                email,
-                avatarUrl,
-                githubId: id,
-            });
-            return cb(null, newUser);
         }
+        const newUser = await User.create({
+            name,
+            email,
+            avatarUrl,
+            githubId: id,
+        });
+        return cb(null, newUser);
     } catch (error) {
         return cb(error);
     }
@@ -131,10 +132,26 @@ export const logout = (req, res) => {
     res.redirect(routes.home);
 };
 
-export const userDetail = (req, res) => {
-    res.render("userDetail", { pageTitle: "User Detail" });
+//사용자가 로그인시 보일 profile 화면
+export const getMe = (req, res) => {
+    res.render("userDetail", { pageTitle: "User Detail", user: req.user });
 };
 
-export const editProfile = (req, res) => res.render("editProfile", { pageTitle: "Edit Profile" });
+//이용자가 profile에 들어가면 보이는 화면
+export const userDetail = async (req, res) => {
+    const {
+        params: { id },
+    } = req;
+    try {
+        const user = await User.findById(id).populate("images");
+        res.render("userDetail", { pageTitle: "User Detail", user });
+        console.log(user);
+    } catch (error) {
+        res.redirect(routes.home);
+    }
+};
+
+export const getEditProfile = (req, res) => res.render("editProfile", { pageTitle: "Edit Profile", user: req.user });
+export const postEditProfile = (req, res) => res.render("editProfile", { pageTitle: "Edit Profile", user: req.user });
 
 export const changePassword = (req, res) => res.render("changePassword", { pageTitle: "Change Password" });
