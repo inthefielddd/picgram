@@ -25,7 +25,6 @@ export const postJoin = async (req, res, next) => {
             await User.register(user, password);
             next();
         } catch (error) {
-            console.log(error);
             res.redirect(routes.home);
         }
     }
@@ -47,7 +46,6 @@ export const githubLoginCallback = async (_, __, profile, cb) => {
     } = profile;
     try {
         const user = await User.findOne({ email });
-        console.log(user);
         if (user) {
             user.githubId = id;
             user.avatarUrl = avatarUrl;
@@ -103,8 +101,7 @@ export const kakaoLoginCallback = async (_, __, profile, done) => {
 
 export const googleLogin = passport.authenticate("google", { scope: ["profile"] });
 
-export const googleLoginCallback = async (accessToken, __, profile, cb) => {
-    console.log(accessToken);
+export const googleLoginCallback = async (_, __, profile, cb) => {
     const {
         id,
         _json: { name, picture },
@@ -135,6 +132,7 @@ export const logout = (req, res) => {
 //사용자가 로그인시 보일 profile 화면
 export const getMe = (req, res) => {
     res.render("userDetail", { pageTitle: "User Detail", user: req.user });
+    console.log(req.user);
 };
 
 //이용자가 profile에 들어가면 보이는 화면
@@ -143,15 +141,52 @@ export const userDetail = async (req, res) => {
         params: { id },
     } = req;
     try {
-        const user = await User.findById(id).populate("images");
-        res.render("userDetail", { pageTitle: "User Detail", user });
+        const user = await User.findById(id);
         console.log(user);
+        res.render("userDetail", { pageTitle: "User Detail", user });
     } catch (error) {
         res.redirect(routes.home);
     }
 };
 
-export const getEditProfile = (req, res) => res.render("editProfile", { pageTitle: "Edit Profile", user: req.user });
-export const postEditProfile = (req, res) => res.render("editProfile", { pageTitle: "Edit Profile", user: req.user });
+export const getEditProfile = (req, res) => res.render("editProfile", { pageTitle: "Edit Profile" });
 
-export const changePassword = (req, res) => res.render("changePassword", { pageTitle: "Change Password" });
+export const postEditProfile = async (req, res) => {
+    const {
+        body: { name, email },
+        file,
+    } = req;
+    try {
+        await User.findByIdAndUpdate(req.user.id, {
+            //
+            name,
+            email,
+            avatarUrl: file ? file.path : req.user.avatarUrl,
+        });
+        res.redirect(routes.me);
+    } catch (error) {
+        console.log(error);
+        res.redirect(routes.editProfile);
+    }
+};
+
+export const getChangePassword = (req, res) => {
+    res.render("changePassword", { pageTitle: "Change Password" });
+};
+
+export const postChangePassword = async (req, res) => {
+    const {
+        body: { oldPassword, newPassword, newPassword2 },
+    } = req;
+    try {
+        if (newPassword !== newPassword2) {
+            res.status(400);
+            res.redirect(`/users${routes.changePassword}`);
+            return;
+        }
+        await req.user.changePassword(oldPassword, newPassword);
+        res.redirect(routes.me);
+    } catch (error) {
+        res.redirect(`/users${routes.changePassword}`);
+    }
+};

@@ -1,14 +1,15 @@
 import multer from "multer";
 import routes from "./routes";
 
-//위치
+//multer
+//image
 export const multerImage = multer({ dest: "uploads/images/" });
-//하나의 파일만 반환한다
-export const uploadImage = multerImage.single("imgFile");
+//profile avatar
+export const multerAvatar = multer({ dest: "uploads/avatars/" });
 
 //전역적으로 접근가능한 middleware
 export const localMiddleware = (req, res, next) => {
-    res.locals.siteName = "Picgram";
+    res.locals.siteName = "Orgel";
     res.locals.routes = routes;
     res.locals.loggedUser = req.user || null;
     next();
@@ -33,3 +34,7 @@ export const onlyPrivate = (req, res, next) => {
         res.redirect(routes.home);
     }
 };
+
+//하나의 파일만 반환한다
+export const uploadImage = multerImage.single("imgFile");
+export const uploadeAvatar = multerAvatar.single("avatar");

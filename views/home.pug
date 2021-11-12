@@ -2,9 +2,18 @@ extends layouts/main
 include mixins/imageBlock
 
 block content
+    .home-slider
+        img(src="slider_img/1.jpg", alt="ola")
+        img(src="slider_img/2.jpg", alt="ola")
+        img(src="slider_img/3.jpg", alt="ola")
     .home-images
         each image in images
             +imageBlock({
                 id:image.id,
                 imgFile:image.fileUrl,
             })
+    .home-cards
+        a(href="https://www.instagram.com/grida_graphic/") 
+            .card-one
+                span 그리다
+

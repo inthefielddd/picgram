@@ -32,14 +32,22 @@ export const postUpload = async (req, res) => {
         body: { title, description },
         file: { path },
     } = req;
-    const newImage = await Image.create({
-        fileUrl: path,
-        title,
-        description,
-    });
-    console.log(newImage);
-
-    res.redirect(routes.pictureDetail(newImage.id));
+    try {
+        const newImage = await Image.create({
+            fileUrl: path,
+            title,
+            description,
+            creator: req.user.id,
+        });
+        //req.user안에있는 images array 안에 새로운이미지 객체 넣어주기
+        //array에는 전체가 필요한 것이 아닌 id값만
+        req.user.images.push(newImage.id);
+        req.user.save();
+        res.redirect(routes.pictureDetail(newImage.id));
+    } catch (error) {
+        console.log(error);
+        res.redirect(`/pictures${routes.upload}`);
+    }
 };
 
 export const pictureDetail = async (req, res) => {
