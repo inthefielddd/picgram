@@ -1,0 +1,8 @@
+header.header#header
+    .header__wrapper    
+        .header__column
+            a(href=routes.home)
+                img(src="static/logo/orgel.png", alt="logo" width="140px" height="40px")
+        .header__column
+            form(action=routes.search method="get")
+                input(type="text" placeholder="검색어를 입력해주세요" name="term")

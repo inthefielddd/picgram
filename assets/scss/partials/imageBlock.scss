@@ -1,7 +1,16 @@
 .imageBlock {
+    width: 230px;
+    height: 220px;
+    position: relative;
+    display: block;
+    overflow: hidden;
+    &:hover img {
+        transform: scale(1.1);
+    }
     .imageBlock__thumnail {
         width: 100%;
-        max-width: 400px;
-        height: 400px;
+        max-width: 300px;
+        height: 220px;
+        transition: transform 1.5s;
     }
 }

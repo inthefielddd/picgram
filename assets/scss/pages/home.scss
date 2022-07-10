@@ -1,5 +1,154 @@
-.home-images{
-    display:grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap:20px;
+.home-slider {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    overflow: hidden;
+    transition: transform 0.7s;
+    .item {
+        img {
+            width: 1200px;
+        }
+    }
+}
+
+//profile
+.home-artist {
+    width: 1150px;
+    padding: 25px;
+    .home-artist-title {
+        h5 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-right: 10px;
+            padding-bottom: 25px;
+        }
+    }
+    .home-artist-detail {
+        display: flex;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 5px;
+        border-radius: 10px;
+        .home-artist-detail-content {
+            display: flex;
+            flex-direction: column;
+            .card {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-bottom: 10px;
+                position: relative;
+                display: block;
+                overflow: hidden;
+                border-radius: 10px;
+                width: 285px;
+                height: 280px;
+                img {
+                    width: 100%;
+                    max-width: 300px;
+                    height: 280px;
+                    transition: transform 1.5s;
+                }
+                &:hover img {
+                    transform: scale(1.1);
+                    border-radius: 10px;
+                }
+            }
+            .home-artist-info {
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                padding-left: 10px;
+                .home-artist-detail-group {
+                    font-weight: 700;
+                    margin-right: 10px;
+                }
+                &:hover {
+                    opacity: 0.8;
+                }
+            }
+        }
+    }
+}
+.home-picture {
+    width: 1150px;
+    padding: 0 25px;
+    position: relative;
+    .home-images-title {
+        display: flex;
+        align-items: center;
+        margin: 25px 0;
+        cursor: pointer;
+        h5 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-right: 10px;
+            &:hover {
+                opacity: 0.6;
+            }
+        }
+        .home-images-more {
+            position: absolute;
+            right: 25px;
+            i {
+                font-size: 15px;
+            }
+        }
+    }
+    .home-images {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-gap: 1px;
+    }
+}
+.home-concert {
+    max-width: 1150px;
+    padding: 0 25px;
+    position: relative;
+    .home-concert-title {
+        display: flex;
+        align-items: center;
+        margin-bottom: 25px;
+        justify-content: flex-start;
+        cursor: pointer;
+        h5 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-right: 10px;
+            &:hover {
+                opacity: 0.6;
+            }
+        }
+        .home-concert-more {
+            position: absolute;
+            right: 30px;
+            i {
+                font-size: 15px;
+            }
+        }
+    }
+    .home-concert-cards {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 5px;
+        align-items: center;
+        .card {
+            width: 370px;
+            height: 370px;
+            margin-bottom: 10px;
+            position: relative;
+            display: block;
+            border-radius: 10px;
+            border: 1px solid $grey;
+            overflow: hidden;
+            img {
+                width: 100%;
+                transition: transform 1.5s;
+            }
+            &:hover img {
+                transform: scale(1.1);
+                overflow: hidden;
+            }
+        }
+    }
 }

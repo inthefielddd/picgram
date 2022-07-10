@@ -1,0 +1,66 @@
+extends layouts/main
+include mixins/imageBlock
+
+block content
+    //- section
+    //-  .home-slider#slider
+    //-         .item
+    //-             img(src="static/slider_img/2.png", alt="ola")
+    section.home-video
+            .video 
+                iframe(width="1200" height="500" src="https://www.youtube.com/embed/-yWgvuy5V9A?autoplay=1&mute=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen)
+    section.home-artist
+        .home-artist-title 
+            h5 오르골 아티스트
+        .home-artist-detail
+            .home-artist-detail-content
+                a.card(href="#")
+                    img(src="static/profile/1.png", alt="artist")
+                .home-artist-info
+                    span.home-artist-detail-group 올라
+                    span.home-artist-detail-name 김누리(드러머)    
+            .home-artist-detail-content
+                a.card(href="#")
+                    img(src="static/profile/2.png", alt="artist")
+                .home-artist-info
+                    span.home-artist-detail-group 올라
+                    span.home-artist-detail-name 현청화(타악)
+            .home-artist-detail-content
+                a.card(href="#")
+                    img(src="static/profile/3.png", alt="artist")
+                .home-artist-info
+                    span.home-artist-detail-group 올라
+                    span.home-artist-detail-name 방수지(보컬)
+            .home-artist-detail-content
+                a.card(href="#")
+                    img(src="static/profile/4.png", alt="artist")
+                .home-artist-info
+                    span.home-artist-detail-group 올라
+                    span.home-artist-detail-name 이화림(가야금)               
+    section.home-concert
+        .home-concert-title
+            h5 오르골 공연
+            span 광주 청년 예술인이 만드는 공연
+            .home-concert-more
+                i.fas.fa-chevron-right
+        .home-concert-cards
+                a.card 
+                    img(src="static/concert/1.jpg", alt="concert")
+                a.card
+                    img(src="static/concert/2.png", alt="concert")        
+                a.card
+                    img(src="static/concert/3.jpeg", alt="concert")        
+                a.card
+                    img(src="static/concert/4.png", alt="concert")        
+    section.home-picture
+        .home-images-title
+            h5 Activies Pictures
+            span 광주 청년 예술 공연 사진   
+            .home-images-more    
+                i.fas.fa-chevron-right
+        .home-images
+            each image in images
+                +imageBlock({
+                    id:image.id,
+                    imgFile:image.fileUrl,
+                })

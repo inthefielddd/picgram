@@ -11,9 +11,9 @@ import {
     googleLogin,
     postSocialLogin,
     getMe,
-} from "../controllers/userController";
-import { home, search } from "../controllers/pictureController";
-import routes from "../routes";
+} from "../../controllers/userController";
+import { contact, detail, home, members, search } from "../../controllers/pictureController";
+import routes from "../../routes";
 import { onlyPrivate, onlyPulic } from "../middleware";
 
 const globalRouter = express.Router();
@@ -21,6 +21,10 @@ const globalRouter = express.Router();
 globalRouter.get(routes.home, home);
 
 globalRouter.get(routes.search, search);
+
+globalRouter.get(routes.detailsOrgel, detail);
+globalRouter.get(routes.members, members);
+globalRouter.get(routes.contactUs, contact);
 
 //join
 globalRouter.get(routes.join, onlyPulic, getJoin);

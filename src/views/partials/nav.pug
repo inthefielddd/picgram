@@ -1,0 +1,25 @@
+nav.navbar
+    .navbar__wrapper
+        .navbar__column
+            ul.navbar__detail 
+                li 
+                    a(href=routes.detailsOrgel) WHAT IS ORGEL?
+                //- li 
+                //-     a(href=routes.members) ORGEL MEMBERS
+                li 
+                    a(href=routes.contactUs) CONTACT US          
+        .navbar__column
+            ul.navbar__auth
+            if !loggedUser
+                li
+                    a(href=routes.join) Join
+                li
+                    a(href=routes.login) Login
+            else
+                li
+                    a(href=`/pictures${routes.upload}`) Upload       
+                li
+                    a(href=routes.me) Profile       
+                li
+                    a(href=routes.logout) logout
+            

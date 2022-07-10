@@ -1,8 +1,8 @@
 import express from "express";
-import { getUpload, pictureDetail, deletePicture, postUpload, getEditPicture, postEditPicture } from "../controllers/pictureController";
+import { getUpload, pictureDetail, deletePicture, postUpload, getEditPicture, postEditPicture } from "../../controllers/pictureController";
 import { onlyPrivate, uploadImage } from "../middleware";
 
-import routes from "../routes";
+import routes from "../../routes";
 
 const pictureRouter = express.Router();
 

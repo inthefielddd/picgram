@@ -1,0 +1,7 @@
+mixin imageBlock(image = {})
+    .imageBlock
+        a(href=routes.pictureDetail(image.id))
+            img.imageBlock__thumnail(src=image.imgFile alt=image.title)
+            h1.imageBlock__title=image.title
+            p.imageBlock__description=image.description
+            h3.imageBlock__views=image.views

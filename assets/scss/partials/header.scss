@@ -1,43 +1,30 @@
 .header {
     background-color: $white;
-    margin-bottom: 50px;
     border-bottom: 1px solid $dark-grey;
     .header__wrapper {
-        display: grid;
+        display: flex;
         width: 100%;
+        align-content: center;
         max-width: 1200px;
-        grid-template-columns: repeat(3, 1fr);
+        flex-direction: row;
         margin: 0 auto;
         align-items: center;
         padding: 1em 0;
         .header__column {
             display: flex;
             i {
-                color: #b5269a;
                 font-size: 30px;
             }
-            &:nth-child(2) {
+            &:first-child {
                 width: 100%;
-                justify-self: center;
+                align-items: center;
             }
             &:last-child {
-                justify-self: end;
-                ul {
-                    display: flex;
-                    color: $black;
-                    align-items: center;
-                    text-transform: uppercase;
-                    font-weight: 700;
-                    li:not(:last-child) {
-                        margin-right: 1em;
-                    }
-                    a {
-                        color: #b5269a;
-                    }
-                }
+                width: 100%;
+                justify-content: end;
             }
             form {
-                width: 100%;
+                width: 50%;
                 input {
                     width: 100%;
                     padding: 6px 8px;

@@ -1,0 +1,33 @@
+.contact-title {
+    font-size: 2.5em;
+    color: #130f40;
+    font-weight: 900;
+    line-height: 1.1;
+}
+.contact-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+
+    .contact-info {
+        display: flex;
+        .contact-box {
+            border: 1px solid #130f40;
+            border-top-width: 20px;
+            margin-left: 50px;
+            text-align: center;
+            width: 200px;
+            padding: 70px;
+            line-height: 1.4;
+            h6 {
+                font-size: 14px;
+            }
+            a {
+                font-size: 14px;
+                text-decoration: underline;
+                color: rgb(17, 10, 144);
+            }
+        }
+    }
+}
